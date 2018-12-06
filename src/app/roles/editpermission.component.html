@@ -1,0 +1,78 @@
+<div style="padding:10px;">
+	<div class="panelheader"> 
+		<div class="panel panel-primary">
+						   <div class="pageheader">
+								<i class="fa fa-bar-chart-o fa-fw">Edit Permissions</i>                       
+						   </div>        		
+						   <div class="panel-body" >
+							   <div id="msg" class="msg"></div>
+							   <form  novalidate  [formGroup]="form" (ngSubmit)="submitForm()">
+								  <div class="panel panel-default" >            
+										<div class="panel-body" *ngFor="let permission of permissonslist['roles_list']">
+											<div class="form-group">
+												<label for="inputPassword3" class="col-sm-2 col-form-label">Name</label>
+												<div class="col-sm-9">											  
+												<input type="text" class="form-control" name="role_name"  required placeholder="Name" value="{{permission.role_name}}"/>					
+												<div  *ngIf="this.form.get('role_name').hasError('required') && this.form.get('role_name').touched">Name is required</div>
+												<input type="hidden" class="form-control" formControlName="role_id"  value="{{permission.role_id}}" formControlName="role_id" [(ngModel)]="permission.role_id" />													
+												</div>
+											</div>	
+										</div>
+										<div class="panel-body">
+										    <table width="100%" border="0" cellpadding="5" cellspacing="15" id="permissions">
+												<tr>
+													<td width="2%">
+														<input type="checkbox" name="checkall" id="checkall" onclick="javascript:Checkall();">
+														
+													</td>
+													<td align="left"><b>CHECK ALL</b></td>
+													
+													
+												</tr>
+												<tr *ngFor="let category of permissonslist['categories']; let i = index">
+													<td align='left' width='100%' colspan='2'>											
+														<input type='checkbox' name='selectcat' id='selectcat'/>&nbsp;&nbsp;&nbsp;<b>{{category.cat_name}}</b>
+														<table border='0' cellpadding='15' cellspacing='15' width='100%'>
+															<tr style='height:45px;' *ngFor="let page of category['pages'];  let j = index">
+																<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>								
+																	<td align='left' width='20%'>
+																		<b>{{page.page_alias_name}}</b>									
+																	</td>																		
+																<td>
+																<input type='checkbox'  name='selectviewpage' value='{{page.page_id}}' [checked]="page.vchk" (change)="search(page, $event,'view')"/>View{{page.page_id}}													
+																</td>																	
+																<td>
+																<input type='checkbox' name='selectaddpage' value="{{page.page_id}}" [checked]="page.achk" (change)="search(page, $event,'add')"/>
+																	Add
+																</td>
+																<td>
+																<input type='checkbox' name='selecteditpage' value="{{page.page_id}}" [checked]="page.echk" (change)="search(page, $event,'edit')"/>
+																	Edit
+																</td>														
+																<td>
+																<input type='checkbox' name='selectdelpage'  value="{{page.page_id}}" [checked]="page.dchk" (change)="search(page, $event,'del')"/>
+																	Del
+																</td>
+																<td>
+																<input type='checkbox' name='selectstatpage'  value="{{page.page_id}}" [checked]="page.schk" (change)="search(page, $event,'stat')"/>
+																	Stat
+																</td>
+															</tr>
+														</table>											
+													</td>
+												</tr>	
+											</table>
+										</div>
+									    <div class="panel-footer">
+										<div class="row">
+										  <div class="col-sm-9 col-sm-offset-3">
+											 <button type="submit" value="Submit">Submit</button>
+										  </div>
+										</div>
+									    </div>								
+								  </div>
+								</form>
+						   </div>
+		</div>
+	</div>     
+</div>

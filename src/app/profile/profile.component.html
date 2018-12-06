@@ -1,0 +1,40 @@
+<div style="padding:10px;">
+	<div class="panelheader"> 
+		<div class="panel panel-primary">
+							<div class="pageheader">
+								<i class="fa fa-bar-chart-o fa-fw"></i>Edit Profile                                     
+							</div>        		
+						   <div class="panel-body">
+							   <div id="msg" class="msg"> </div>
+							   <form name="form" (ngSubmit)="f.form.valid && onSubmitEditProfile()" #f="ngForm" novalidate>						   
+								  <div class="panel panel-default">            
+									 <div class="panel-body">
+										  <div class="form-group"  [ngClass]="{ 'has-error': f.submitted && !admin_pswd.valid }">
+											<label for="inputPassword3" class="col-sm-2 col-form-label">New Password</label>
+											<div class="col-sm-9">											  
+											  <input type="password" class="form-control" name="admin_pswd" [(ngModel)]="model.admin_pswd" #admin_pswd="ngModel" required placeholder="New Password"/>
+											  <div *ngIf="f.submitted && !admin_pswd.valid" class="help-block">Password is required</div>			
+											</div>
+										  </div>
+										  <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !con_admin_pswd.valid }">
+											<label for="inputPassword3" class="col-sm-2 col-form-label">Confirm Password</label>
+											<div class="col-sm-9">											  
+											  <input type="password" class="form-control" name="con_admin_pswd" [(ngModel)]="model.con_admin_pswd" #con_admin_pswd="ngModel" required placeholder="Confirm Password"/>
+											  
+											  <div *ngIf="f.submitted && !con_admin_pswd.valid" class="help-block">Confirm Password is required</div>
+											</div>
+										  </div>                
+									 </div>
+									  <div class="panel-footer">
+										<div class="row">
+										  <div class="col-sm-9 col-sm-offset-3">										
+											<button [disabled]="loading" class="btn btn-primary">Submit</button>											
+										  </div>
+										</div>
+									  </div>								
+								  </div>
+								</form>
+						   </div>
+		</div>
+	</div>     
+</div>

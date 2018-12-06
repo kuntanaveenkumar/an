@@ -1,0 +1,50 @@
+<div style="padding:10px;">
+	<div class="panelheader"> 
+		<div class="panel panel-primary">
+<div class="pageheader">
+<i class="fa fa-bar-chart-o fa-fw"></i>                       
+</div>        		
+<div class="panel-body" >
+<div id="msg" class="msg"> </div>
+<form [formGroup]="form" (ngSubmit)="onSubmit(roleusers)" novalidate enctype="multipart/form-data">
+<div class="panel panel-default">            
+ <div class="panel-body">
+    
+         <div class="form-group">
+                 <label for="inputPassword3" class="col-sm-2 col-form-label">Name</label>
+                 <div class="col-sm-9">				
+                 <input type="text" class="form-control" formControlName="admin_user"  required placeholder="Name" [(ngModel)]="roleusers.admin_user"  [disabled]="is_edit==false ? true : null"/>					
+                 <div  *ngIf="this.form.get('admin_user').hasError('required') && this.form.get('admin_user').touched">Name is required</div>
+                 <input type="hidden" class="form-control" formControlName="admin_id"  [(ngModel)]="roleusers.admin_id"/>	
+                 </div>
+         </div>	
+         <div class="form-group">
+                 <label for="inputPassword3" class="col-sm-2 col-form-label">Password</label>
+                 <div class="col-sm-9">											  
+                 <input type="password" class="form-control" formControlName="admin_pswd"  required placeholder="Name" [(ngModel)]="roleusers.admin_pswd"/>					
+                 <div  *ngIf="this.form.get('admin_pswd').hasError('required') && this.form.get('admin_pswd').touched">Password is required</div>	
+                 </div>
+         </div>     
+         <div class="form-group"  >
+                 <label for="inputPassword3" class="col-sm-2 col-form-label">Role</label>
+                 <div class="col-sm-9">											  
+                 <select class="form-control" formControlName="admin_role_id"  required placeholder="Name" [(ngModel)]="roleusers.admin_role_id">					
+                     <option value='' >Select</option>
+                     <option value='{{ item.role_id }}' *ngFor="let item of roles['roles_list']" > {{ item.role_name }}</option>
+                 </select>                 	
+                 </div>
+         </div>
+ </div>
+  <div class="panel-footer">
+      <div class="row">
+        <div class="col-sm-9 col-sm-offset-3">										
+              <button  [disabled]="this.form.invalid" class="btn btn-primary">Submit</button>
+        </div>
+      </div>
+  </div>								
+</div>
+</form>
+</div>
+</div>
+</div>     
+</div>

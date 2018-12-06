@@ -1,0 +1,26 @@
+{
+  "compileOnSave": false,
+  "compilerOptions": {
+    "outDir": "./dist/out-tsc",
+    "baseUrl": "./src",
+    "sourceMap": true,
+    "declaration": false,
+    "skipLibCheck": true,
+    "moduleResolution": "node",
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "target": "es5",	
+    "typeRoots": [
+      "node_modules/@types"
+    ],
+	"types": ["system",
+			  "jquery",
+			  "bootstrap",  
+              "node"
+			 ],
+    "lib": [
+      "es2016",
+      "dom"
+    ]
+  }
+}

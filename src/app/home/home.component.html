@@ -1,0 +1,148 @@
+<input type="hidden" name="base_url" id="base_url" value="/">
+        <section>
+            <div class="leftpanel" >    
+                <div class="logopanel">
+                    <h1 style="color:#fff;">Evo Upload</h1>
+                </div>        
+                <div class="leftpanelinner">
+                    <input type="hidden" name="gbledit" id="gbledit">
+                    <input type="hidden" name="gbldel" id="gbldel">
+                    <input type="hidden" name="gblstat" id="gblstat">
+                    <input type="hidden" name="gbladmin_id" id="gbladmin_id" value="1">
+                    <input type="hidden" name="listtype" id="listtype" >
+                    <ul class="nav nav-pills nav-stacked nav-bracket" >                       
+                        <li>												
+							<a [routerLink]="['/home']"><i class="fa fa-home"></i> <span>Dashboard</span></a>						
+						</li>														
+					    <li class="nav-parent">
+							<a [routerLink]=""><i class="fa fa-files-o"></i> <span>Product Manager</span></a>
+							<ul class="children">
+								<li id="listproducts">														
+									<a [routerLink]="['/home/viewproducts']" class='/home/viewproducts'>														
+										<i class="fa fa-caret-right"></i> View Products
+									</a>
+									<a [routerLink]="['/home/viewcategories']" class='/home/viewcategories'>														
+										<i class="fa fa-caret-right"></i> View Categories
+									</a>		
+                                    <a [routerLink]="['/home/viewfiles']" class='/home/viewfiles'>
+                                        <i class="fa fa-caret-right"></i> View Files
+                                    </a>
+								</li>                                                        
+							</ul>
+                        </li>
+
+						<li class="nav-parent">
+							<a [routerLink]=""><i class="fa fa-files-o"></i> <span>Role Manager</span></a>
+							<ul class="children">
+								<li id="listproducts">														
+									<a [routerLink]="['/home/viewroles']"  class='/home/viewroles'>														
+										<i class="fa fa-caret-right"></i> View Roles
+									</a>
+									<a [routerLink]="['/home/viewroleusers']" class='/home/viewroleusers'>														
+										<i class="fa fa-caret-right"></i> View Role Users
+									</a>		
+                                    <a [routerLink]="['/home/viewpermissions']" class='/home/viewpermissions'>
+                                        <i class="fa fa-caret-right"></i> View Role Permission
+                                    </a>
+								</li>                                                        
+							</ul>
+                        </li>
+						
+                        <li>           
+							<a [routerLink]="['/login']"><i class='fa fa-sign-out'></i> <span>Logout </span></a>
+						</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="mainpanel">
+                <div class="headerbar">
+                    <a class="menutoggle"><i class="fa fa-bars"></i></a>
+                    <div class="header-right">
+                        <ul class="headermenu">
+                            <li>
+                                <div class="btn-group">
+                                    <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" style="background-color:#b91422;color:#fff;">
+                                        Admin
+                                        <span class="caret"></span>
+                                    </button>
+                                    <ul class="dropdown-menu dropdown-menu-usermenu pull-right">
+                                        <li><a [routerLink]="['/home/editprofile']"><i class="glyphicon glyphicon-user"></i> My Profile</a></li>
+                                        <li><a [routerLink]="['/login']"><i class="glyphicon glyphicon-log-out"></i> Log Out</a></li>
+                                    </ul>
+                                </div>
+                            </li>
+                        </ul>
+                        <input type="hidden" name="page_name" id="page_name" value="">
+                        <input type="hidden" name="role_id" id="role_id" value="1">
+                    </div>
+                </div>
+				<div class="contentpanel">
+					<div class="inner-outlet">
+						<router-outlet></router-outlet>
+					</div>
+				</div>
+			</div>
+			<script type="text/javascript">
+			
+			
+			
+							
+							
+                  /*  $(document).ready(function ()//When the dom is ready
+                    {
+
+                         alert("tester");
+
+                        $('.nav-parent > a').live("click", function () {
+
+
+                            var parent = $(this).parent();
+                            var sub = parent.find('> ul');
+							alert("tester");
+                            // Dropdown works only when leftpanel is not collapsed
+                            if (!$('body').hasClass('leftpanel-collapsed')) {
+
+                                if (sub.is(':visible')) {
+
+                                    sub.slideUp(200, function () {
+
+                                        parent.removeClass('nav-active');
+                                        $('.mainpanel').css({height: ''});
+                                        adjustmainpanelheight2();
+                                    });
+                                } else {
+
+                                    closeVisibleSubMenu2();
+
+                                    parent.addClass('nav-active');
+                                    //	jQuery("a:visited").parent("li").addClass("nav-active");
+                                    sub.slideDown(200, function () {
+                                        adjustmainpanelheight2();
+                                    });
+                                }
+                            }
+                            return false;
+                        });
+                        // $('.menu li a.selected').parents('li').addClass('parent');
+                        //alert($("#page_name").val());
+
+
+
+                    });
+                    function adjustmainpanelheight2() {
+                        // Adjust mainpanel height
+                        var docHeight = jQuery(document).height();
+                        if (docHeight > jQuery('.mainpanel').height())
+                            jQuery('.mainpanel').height(docHeight);
+                    }
+                    function closeVisibleSubMenu2() {
+                        jQuery('.nav-parent').each(function () {
+                            var t = jQuery(this);
+                            if (t.hasClass('nav-active')) {
+                                t.find('> ul').slideUp(200, function () {
+                                    t.removeClass('nav-active');
+                                });
+                            }
+                        });
+                    }*/
+                </script>

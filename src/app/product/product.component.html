@@ -1,0 +1,51 @@
+
+    <div class="pageheader">
+      <h2><i class="fa fa-table"></i>Products</h2>
+	   <div class="breadcrumb-wrapper">        
+			<a [routerLink]="['/home/editproduct']">
+				<button class='btn btn-primary' type='button' id='add'>Add</button>
+			</a>
+      </div>
+    </div>
+    <div class="contentpanel">      
+      <div class="panel panel-default">      
+        <div class="panel-body">		
+          <div class="table-responsive">
+		    <p class="mb20" align='center'><code id='error'></code></p>	
+			<table class="table" >
+              <thead>
+                 <tr>
+                     <th>Product Name</th>
+                     <th>Product Name French</th>  
+                     <th>Product Model No</th>                     
+                     <th>Status</th>
+					 <th>Action</th>                   
+                 </tr>
+              </thead>
+              <tbody id="table2">   
+			  <tr *ngFor="let item of products['products_list']">
+				  <td>{{item.product_name}}</td>
+				  <td>{{item.product_name_french}}</td>
+				  <td>{{item.product_model_no}}</td>
+				  <td>
+					<img src='./images/active.png' id='active' class='active'  (click)="updatestatus(item)" *ngIf="item.product_status==1">					
+					<img src='./images/inactive.png' id='active' class='active'  (click)="updatestatus(item)" *ngIf="item.product_status==0">	
+				  </td>             
+				  <td>				   				   				   
+				    <a [routerLink]="['/home/editproduct', item.product_id]">
+						<button class='btn btn-warning' type='button' id='edit'>Edit</button>
+					</a>
+				   <button class='btn btn-danger' type='button' id='delete' (click)="deleteitem(item)">Delete</button>
+				  </td>
+			  </tr>				  
+              </tbody>
+           </table>
+          </div>
+		  <my-pagination (goPage)="goToPage($event)" (goNext)="onNext()" (goPrev)="onPrev()" [pagesToShow]="3" [page]="page" [perPage]="limit" [count]="total"></my-pagination>
+		<input type="hidden" name="pageno" id="pageno" value="1">
+		<input type="hidden" name="sortby" id="sortby" value="product_id">
+		<input type="hidden" name="sorttype" id="sorttype" value="desc">
+        </div>
+      </div>
+    </div>
+

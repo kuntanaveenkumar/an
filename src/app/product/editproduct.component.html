@@ -1,0 +1,104 @@
+<div style="padding:10px;">
+	<div class="panelheader"> 
+		<div class="panel panel-primary">
+							<div class="pageheader">
+								<i class="fa fa-bar-chart-o fa-fw"></i>                       
+							</div>        		
+						   <div class="panel-body" >
+							   <div id="msg" class="msg"> </div>
+							   <form [formGroup]="form" (ngSubmit)="onSubmit(products)" novalidate enctype="multipart/form-data"> <div class="panel panel-default">            
+							<div class="panel-body">
+								<div class="form-group">
+									<label for="inputPassword3" class="col-sm-2 col-form-label">Name</label>
+									<div class="col-sm-9">											  
+										<input type="text" class="form-control" formControlName="product_name"  required placeholder="Name" [(ngModel)]="products.product_name"/>					
+										<div  *ngIf="this.form.get('product_name').hasError('required') && this.form.get('product_name').touched"
+										 >Name is required</div>
+										<input type="hidden" class="form-control" formControlName="product_id"  [(ngModel)]="products.product_id"/>	
+									</div>
+								</div>	
+								<div class="form-group">
+									<label for="inputPassword3" class="col-sm-2 col-form-label">Name(French)</label>
+									<div class="col-sm-9">											  
+										<input type="text" class="form-control" formControlName="product_name_french" required placeholder="Product French Name" [(ngModel)]="products.product_name_french"/>
+										
+										<div  *ngIf="this.form.get('product_name_french').hasError('required') && this.form.get('product_name_french').touched">Name(French)is required</div>
+									</div>
+								</div>
+								<div class="form-group">
+									<label for="inputPassword3" class="col-sm-2 col-form-label">Model No</label>
+									<div class="col-sm-9">											  
+										<input type="text" class="form-control" formControlName="product_model_no" required placeholder="Model No" [(ngModel)]="products.product_model_no"/>
+										<div *ngIf="this.form.get('product_model_no').hasError('required') && this.form.get('product_model_no').touched">Model No is required</div>
+									</div>
+								</div> 										  
+								<div class="form-group">
+									<label for="inputPassword3" class="col-sm-2 col-form-label">Description</label>
+									<div class="col-sm-9">											  
+										<textarea  class="form-control" formControlName="product_desc" placeholder="Description" [(ngModel)]="products.product_desc"></textarea> 
+										
+										<div *ngIf="this.form.get('product_desc').hasError('required') && this.form.get('product_desc').touched">Description is required</div>
+									</div> 
+								</div>
+								<div class="form-group">
+									<label for="inputPassword3" class="col-sm-2 col-form-label">French Description</label>
+									<div class="col-sm-9">											  
+										<textarea  class="form-control" formControlName="product_desc_french" required placeholder="Description"  [(ngModel)]="products.product_desc_french"></textarea>
+										<div *ngIf="this.form.get('product_desc_french').hasError('required') && this.form.get('product_desc_french').touched">French Description is required</div>
+									</div>
+								</div>
+								<div class="form-group">
+									<label for="inputPassword3" class="col-sm-2 col-form-label">Meta Title</label>
+									<div class="col-sm-9">											  
+										<input type="text" class="form-control" formControlName="product_meta_title_en" required placeholder="Meta Title" [(ngModel)]="products.product_meta_title_en"/>
+										<div *ngIf="this.form.get('product_meta_title_en').hasError('required') && this.form.get('product_meta_title_en').touched">Meta Title is required</div>
+									</div>
+								</div>
+								<div class="form-group">
+									<label for="inputPassword3" class="col-sm-2 col-form-label">Meta Keywords</label>
+									<div class="col-sm-9">											  
+										<input type="text" class="form-control" formControlName="product_meta_keywords_en" required placeholder="Meta Keywords" [(ngModel)]="products.product_meta_keywords_en"/>				
+										<div *ngIf="this.form.get('product_meta_keywords_en').hasError('required') && this.form.get('product_meta_keywords_en').touched">Meta Keywords is required</div>
+									</div>
+								</div>
+								<div class="form-group" >
+									<label for="inputPassword3" class="col-sm-2 col-form-label">Meta Description</label>
+									<div class="col-sm-9">											  
+										<textarea class="form-control" formControlName="product_meta_desc_en" required placeholder="Meta Description" [(ngModel)]="products.product_meta_desc_en"></textarea>				
+										<div  *ngIf="this.form.get('product_meta_desc_en').hasError('required') && this.form.get('product_meta_desc_en').touched">Meta Description is required</div>						
+									</div>
+								</div>
+								<div class="form-group" >
+									<label for="inputPassword3" class="col-sm-2 col-form-label">Upload Product Image</label>
+									<div class="col-sm-9">											  
+										<input type="file" (change)="fileChangeEvent($event)" placeholder="Upload file" accept=".jpg,.png">
+										<div style="color:green;">{{this.imagedata.msg}}
+										<input type="text" name="product_image" id="product_image" formControlName="product_image" value="{{this.imagedata.filename}}" [(ngModel)]="products.product_image">
+										</div>
+									</div>
+								</div>			
+							</div>
+									  <div class="panel-footer">
+										<div class="row">
+										  <div class="col-sm-9 col-sm-offset-3">										
+											<button  [disabled]="this.form.invalid" class="btn btn-primary">Submit</button>											
+										  </div>
+										</div>
+									  </div>								
+								  </div>
+								</form>
+								<!--div class="form-group" >
+								<label for="inputPassword3" class="col-sm-2 col-form-label"></label>
+								<div class="col-sm-9">											  
+								<form ngNoForm action="http://Api.app/api/v1/uploadImage" 
+								target="_blank" 
+								method="POST" 
+								enctype="multipart/form-data">
+								<input type="file" name="image" id="image">
+								<input type="submit" value="Upload Image" name="submit">
+								</form></div>						
+								</div-->
+						   </div>
+		</div>
+	</div>     
+</div>
